@@ -12,7 +12,7 @@ contract Product2 {
 		tvm.accept();
     }
 
-    	modifier checkOwnerAndAccept {
+    modifier checkOwnerAndAccept {
 		// Check that message was signed with contracts key.
 		require(msg.pubkey() == tvm.pubkey(), 102);
 		tvm.accept();
