@@ -1,7 +1,7 @@
 pragma ton-solidity >= 0.35.0;
 pragma AbiHeader expire;
 
-contract Product2 {
+contract Product {
     uint public productResult = 1;
     
     constructor() public {
