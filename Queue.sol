@@ -17,6 +17,7 @@ contract Queue {
     }
 
     function inQueue (string Name) public {
+        
         namesInQueue.push(Name);
         tvm.accept();
     }
@@ -25,7 +26,7 @@ contract Queue {
         
         uint256 lengthQueue = namesInQueue.length;
         //Check that namesInQueue isn't empty        
-        require( lengthQueue> 0, 101);
+        require(lengthQueue> 0, 101);
 
         string[] newQueue = new string[](lengthQueue-1);
 
@@ -35,6 +36,5 @@ contract Queue {
 
         namesInQueue = newQueue;
         tvm.accept();        
-    }
-    
+    }    
 }
