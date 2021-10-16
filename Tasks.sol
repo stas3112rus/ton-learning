@@ -49,7 +49,7 @@ contract Tasks {
     function deleteTaskByKey(int8 key) public{
         
         //Check is key in  allTasks       
-        require(isTaskByKey(key), 301);
+        require(allTasks.exists(key), 301);
         
         if (allTasks[key].inWork)        
             countTasksInWork--;
@@ -59,19 +59,11 @@ contract Tasks {
         tvm.accept();
     }
 
-    function isTaskByKey(int8 keyTofind) private returns(bool){
-            
-        for((int8 key, Task value) : allTasks){
-            if (keyTofind == key)
-                return true;
-         }
-         return false;
-    }
     
     function closeTask(int8 key) public{
         
         //Check is key in  allTasks       
-        require(isTaskByKey(key), 301);
+        require(allTasks.exists(key), 301);
 
         //Check is Task in work
         require(allTasks[key].inWork, 302);
