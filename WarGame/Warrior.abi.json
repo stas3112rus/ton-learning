@@ -1,0 +1,67 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"basicStation","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "makeAttacke",
+			"inputs": [
+				{"name":"obj","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getPowerAttacke",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "takeAttacke",
+			"inputs": [
+				{"name":"powerAttack","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAmounOfLife",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"int256"}
+			]
+		},
+		{
+			"name": "desroyObject",
+			"inputs": [
+				{"name":"opponent","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"amountOfLife","type":"int256"},
+		{"name":"myBasicStation","type":"address"},
+		{"name":"powerAttacke","type":"uint256"}
+	]
+}

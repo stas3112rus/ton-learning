@@ -1,0 +1,73 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addUnitInStation",
+			"inputs": [
+				{"name":"unit","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "removeUnitInStation",
+			"inputs": [
+				{"name":"unit","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getArrUnitInBase",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"address[]"}
+			]
+		},
+		{
+			"name": "takeAttacke",
+			"inputs": [
+				{"name":"powerAttack","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAmounOfLife",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"int256"}
+			]
+		},
+		{
+			"name": "desroyObject",
+			"inputs": [
+				{"name":"opponent","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"amountOfLife","type":"int256"},
+		{"name":"unitInStation","type":"optional(cell)"}
+	]
+}
