@@ -37,7 +37,7 @@
 		{
 			"name": "takeAttacke",
 			"inputs": [
-				{"name":"powerAttack","type":"uint256"}
+				{"name":"powerAttack","type":"int256"}
 			],
 			"outputs": [
 			]
@@ -67,6 +67,7 @@
 		{"name":"_pubkey","type":"uint256"},
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
+		{"components":[{"name":"min","type":"int256"},{"name":"max","type":"int256"}],"name":"lifeValue","type":"tuple"},
 		{"name":"amountOfLife","type":"int256"},
 		{"name":"unitInStation","type":"optional(cell)"}
 	]
