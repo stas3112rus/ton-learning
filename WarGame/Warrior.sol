@@ -9,11 +9,15 @@ contract Warrior is WarUnit{
   
     constructor(BasicStation basicStation) WarUnit(basicStation) public {
         tvm.accept();
-        
-        // Warrior`s amountOfLife can be from 30 to 50
-        amountOfLife = rnd.next(21) + 30;
 
-        // Warrior`s amountOfLife can be from 30 to 50
-        powerAttacke = rnd.next(21) + 30;
+        lifeValue.min = 30;
+        lifeValue.max = 50;
+        
+        amountOfLife = makeRndValue(lifeValue.min, lifeValue.max);
+
+        powerValue.min = 30;
+        powerValue.max = 50;
+        
+        powerAttacke = makeRndValue(lifeValue.min, lifeValue.max); 
     }    
 }

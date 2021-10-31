@@ -11,7 +11,11 @@ contract BasicStation is GameObject{
     constructor() public {
         tvm.accept();
         //BasicStation`s amountOfLife can be from 50 to 250
-        amountOfLife = rnd.next(201) + 50;
+        
+        lifeValue.min = 50;
+        lifeValue.max = 250;
+        
+        amountOfLife = makeRndValue(lifeValue.min, lifeValue.max);
     }
 
     function addUnitInStation (GameObject unit) public {

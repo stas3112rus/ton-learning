@@ -8,11 +8,15 @@ contract Archer is WarUnit{
 
     constructor(BasicStation basicStation) WarUnit(basicStation) public {
         tvm.accept();
+       
+        lifeValue.min = 10;
+        lifeValue.max = 15;
+        
+        amountOfLife = makeRndValue(lifeValue.min, lifeValue.max);
 
-        // Warrior`s amountOfLife can be from 10 to 25
-        amountOfLife = int(rnd.next(15)) + 10;
-
-        // Warrior`s amountOfLife can be from 5 to 15
-        powerAttacke = rnd.next(10) + 5;
+        powerValue.min = 5;
+        powerValue.max = 10;
+        
+        powerAttacke = makeRndValue(lifeValue.min, lifeValue.max);
     }
 }

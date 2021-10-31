@@ -9,7 +9,10 @@ import "BasicStation.sol";
  contract WarUnit is GameObject{
 
     BasicStation myBasicStation;
-    uint internal powerAttacke;
+    int internal powerAttacke;
+    
+    extrmums internal powerValue;
+
 
     constructor(BasicStation basicStation) public {
         tvm.accept();
@@ -21,9 +24,11 @@ import "BasicStation.sol";
         obj.takeAttacke(powerAttacke);
     }
 
-    function getPowerAttacke() public returns(uint){
+    function getPowerAttacke() public returns(int){
         return powerAttacke;
-    }   
+    }
+
+
     
     function checkPossibilityDestoy() virtual internal override{
         // Add destroy, when station call destroy signal
