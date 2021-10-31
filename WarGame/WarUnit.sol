@@ -10,6 +10,12 @@ import "BasicStation.sol";
 
     BasicStation myBasicStation;
     uint internal powerAttacke;
+
+    constructor(BasicStation basicStation) public {
+        tvm.accept();
+        myBasicStation  = basicStation;
+        myBasicStation.addUnitInStation(this);
+    }
     
     function makeAttacke (GameObjectInterface obj) public checkOwnerAndAccept{
         obj.takeAttacke(powerAttacke);

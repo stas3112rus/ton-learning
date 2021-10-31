@@ -6,11 +6,9 @@ import "WarUnit.sol";
 
 contract Archer is WarUnit{
 
-    constructor(BasicStation basicStation) public {
+    constructor(BasicStation basicStation) WarUnit(basicStation) public {
         tvm.accept();
-        myBasicStation  = basicStation;
-        myBasicStation.addUnitInStation(this);
-       
+
         // Warrior`s amountOfLife can be from 10 to 25
         amountOfLife = int(rnd.next(15)) + 10;
 
