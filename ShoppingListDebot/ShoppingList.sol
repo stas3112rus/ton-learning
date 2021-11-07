@@ -121,6 +121,6 @@ contract ShoppingList is IShoppingList, HasConstructorWithPubKey{
     }
 }
 
-
+// some commit
 
 // pubkey 0x2ada2e65ab8eeab09490e3521415f45b6e42df9c760a639bcf53957550b25a16
