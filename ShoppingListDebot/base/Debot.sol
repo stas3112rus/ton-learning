@@ -20,6 +20,7 @@ abstract contract Debot {
 
     /// @notice DeBot entry point.
     function start() public virtual;
+    
 
     /// @notice Returns DeBot metadata.
     /// @return name String with name of debot, e.g. "DePool".
@@ -33,7 +34,7 @@ abstract contract Debot {
     /// @return dabi String with debot ABI.
     function getDebotInfo() public functionID(0xDEB) view virtual returns(
         string name, string version, string publisher, string caption, string author,
-        address support, string hello, string language, string dabi, bytes icon);
+        address support, string hello, string language, string dabi);
 
     /// @notice Returns list of interfaces used by DeBot.
     function getRequiredInterfaces() public view virtual returns (uint256[] interfaces);
@@ -54,4 +55,6 @@ abstract contract Debot {
         m_options |= DEBOT_ABI;
         m_debotAbi = dabi;
     }
+
+  
 }

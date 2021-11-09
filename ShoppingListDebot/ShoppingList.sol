@@ -1,9 +1,12 @@
 
-pragma ton-solidity >= 0.35.0;
+pragma ton-solidity >=0.35.0;
 pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
 
 import "HasConstructorWithPubKey.sol";
 import "IShoppingList.sol";
+import "StructShoppingList.sol";
 
 contract ShoppingList is IShoppingList, HasConstructorWithPubKey{
 
@@ -19,53 +22,36 @@ contract ShoppingList is IShoppingList, HasConstructorWithPubKey{
         _;
     }
 
-    struct Buying {
-        uint32 id;
-        string nameBuying;
-        uint32 quantity;
-        uint64 createdAt;
-        bool isBuying;
-        uint32 totalPrice;
-    }
-
-    struct summary {
-        uint32 itemsIsNotPayed;
-        uint32 itemsIsPayed;
-        uint32 totalSumBuyings;
-    }
+    uint256 public m_ownerPubkey;
 
     uint32 private countOfBuying = 0;
     uint32 private lastId = 0;
 
-    summary public summaryShopping;
-    mapping (uint32=>Buying) public mapIdBuying;
+    summary private summaryShopping;
+    mapping (uint32=>Buying) private mapIdBuying;
 
     constructor(uint256 pubkey) HasConstructorWithPubKey(pubkey) public{
         summaryShopping.totalSumBuyings = 0;
+        m_ownerPubkey = pubkey;
+        tvm.accept();
     }
 
-    function getShoppingStatistis() external override returns (string) {
+    function getShoppingStatistis() external override returns (summary) {
         if (countOfBuying == 0){
-            return string("List of buyings is empty");
+            return summary(0, 0, 0);
         }
 
-        return string(format("You have {}/{}/{} (items isn't payed/ items is payed /total Sum) un your list of Buying", 
-        summaryShopping.itemsIsNotPayed,
-        summaryShopping.itemsIsPayed,
-        summaryShopping.totalSumBuyings
-        ));
+        return summaryShopping;
      }
 
     function setBuyingInList(string nameBuying, uint32 quantity) override external onlyOwner{  
-             
+        tvm.accept();     
         lastId++;
         countOfBuying++;
 
         mapIdBuying[lastId] = Buying(lastId, nameBuying, quantity, now, false, 0);
         
-        summaryShopping.itemsIsNotPayed +=quantity;
-
-        tvm.accept();
+        summaryShopping.itemsIsNotPayed +=quantity;        
     }
 
     function deleteBuyingFromList(uint32 id) override external onlyOwner idInMap(id){
@@ -119,8 +105,8 @@ contract ShoppingList is IShoppingList, HasConstructorWithPubKey{
 
         return result;
     }
+    function getMapIdBuying() public override returns(mapping (uint32=>Buying) shopList){
+        return mapIdBuying;
+    }
 }
 
-// some commit
-
-// pubkey 0x2ada2e65ab8eeab09490e3521415f45b6e42df9c760a639bcf53957550b25a16

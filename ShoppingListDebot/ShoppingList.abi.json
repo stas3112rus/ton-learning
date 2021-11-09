@@ -1,7 +1,6 @@
 {
 	"ABI version": 2,
-	"version": "2.1",
-	"header": ["time", "expire"],
+	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
 			"name": "constructor",
@@ -16,13 +15,13 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"value0","type":"string"}
+				{"components":[{"name":"itemsIsNotPayed","type":"uint32"},{"name":"itemsIsPayed","type":"uint32"},{"name":"totalSumBuyings","type":"uint32"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{
 			"name": "setBuyingInList",
 			"inputs": [
-				{"name":"nameBuying","type":"string"},
+				{"name":"nameBuying","type":"bytes"},
 				{"name":"quantity","type":"uint32"}
 			],
 			"outputs": [
@@ -54,42 +53,24 @@
 			]
 		},
 		{
+			"name": "getMapIdBuying",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"nameBuying","type":"bytes"},{"name":"quantity","type":"uint32"},{"name":"createdAt","type":"uint64"},{"name":"isBuying","type":"bool"},{"name":"totalPrice","type":"uint32"}],"name":"shopList","type":"map(uint32,tuple)"}
+			]
+		},
+		{
 			"name": "m_ownerPubkey",
 			"inputs": [
 			],
 			"outputs": [
 				{"name":"m_ownerPubkey","type":"uint256"}
 			]
-		},
-		{
-			"name": "summaryShopping",
-			"inputs": [
-			],
-			"outputs": [
-				{"components":[{"name":"itemsIsNotPayed","type":"uint32"},{"name":"itemsIsPayed","type":"uint32"},{"name":"totalSumBuyings","type":"uint32"}],"name":"summaryShopping","type":"tuple"}
-			]
-		},
-		{
-			"name": "mapIdBuying",
-			"inputs": [
-			],
-			"outputs": [
-				{"components":[{"name":"id","type":"uint32"},{"name":"nameBuying","type":"string"},{"name":"quantity","type":"uint32"},{"name":"createdAt","type":"uint64"},{"name":"isBuying","type":"bool"},{"name":"totalPrice","type":"uint32"}],"name":"mapIdBuying","type":"map(uint32,tuple)"}
-			]
 		}
 	],
 	"data": [
 	],
 	"events": [
-	],
-	"fields": [
-		{"name":"_pubkey","type":"uint256"},
-		{"name":"_timestamp","type":"uint64"},
-		{"name":"_constructorFlag","type":"bool"},
-		{"name":"m_ownerPubkey","type":"uint256"},
-		{"name":"countOfBuying","type":"uint32"},
-		{"name":"lastId","type":"uint32"},
-		{"components":[{"name":"itemsIsNotPayed","type":"uint32"},{"name":"itemsIsPayed","type":"uint32"},{"name":"totalSumBuyings","type":"uint32"}],"name":"summaryShopping","type":"tuple"},
-		{"components":[{"name":"id","type":"uint32"},{"name":"nameBuying","type":"string"},{"name":"quantity","type":"uint32"},{"name":"createdAt","type":"uint64"},{"name":"isBuying","type":"bool"},{"name":"totalPrice","type":"uint32"}],"name":"mapIdBuying","type":"map(uint32,tuple)"}
 	]
 }

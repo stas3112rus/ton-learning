@@ -1,4 +1,7 @@
 pragma ton-solidity >=0.35.0;
+pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
 
 interface IAddressInput {
 	function get(uint32 answerId, string prompt) external returns (address value);
