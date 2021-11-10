@@ -5,9 +5,7 @@ pragma AbiHeader pubkey;
 
 import "DebotShopMenu.sol";
 
-contract DebotWalkInShop is DebotShopMenu {
-
-    
+contract DebotWalkInShop is DebotShopMenu {    
     
     constructor() public{
         tvm.accept();

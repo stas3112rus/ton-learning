@@ -8,7 +8,7 @@ abstract contract DebotShopMenu is DebotInitShoppingList{
     uint32 private m_id;
     string private m_buyingName;
 
-    function _menu() public virtual override;
+    
 
      // Make Buying    
 

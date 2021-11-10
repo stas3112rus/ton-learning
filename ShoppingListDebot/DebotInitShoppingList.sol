@@ -26,7 +26,7 @@ abstract contract DebotInitShoppingList is Debot, Upgradable{
 
     summary m_stat;
 
-    function _menu() public virtual;
+    function _menu() public virtual {}
 
     int8 StatusContractIsActiveAndDeployed = 1;
     int8 StatusContractIsInactive = -1;
@@ -152,6 +152,4 @@ abstract contract DebotInitShoppingList is Debot, Upgradable{
     function onCodeUpgrade() internal override {
         tvm.resetStorage();
     }
-
-
 }
