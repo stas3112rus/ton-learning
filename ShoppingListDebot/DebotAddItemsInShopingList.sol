@@ -30,11 +30,5 @@ contract DebotAddItemsInShopingList is DebotShopMenu {
             ]
         );
     }
-
-    function DoSome2() public{
-
-    }
-
-
 }
 

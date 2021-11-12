@@ -39,7 +39,7 @@ abstract contract DebotInitShoppingList is Debot, Upgradable{
         Terminal.input(tvm.functionId(savePublicKey),"Please enter your public key",false);
     }
 
-        function getDebotInfo() public functionID(0xDEB) override view returns(
+    function getDebotInfo() public functionID(0xDEB) override view returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi
     ) {
@@ -141,9 +141,7 @@ abstract contract DebotInitShoppingList is Debot, Upgradable{
 			// value sent to the new contract
 			value: 0.2 ton
 			}(publicKey); 		
-	}
-
-    
+	}    
 
     function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
         return [ Terminal.ID, Menu.ID, AddressInput.ID, ConfirmInput.ID ];
