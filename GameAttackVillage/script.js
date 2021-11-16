@@ -17,9 +17,9 @@ function attackTheVilage(resourcesInVillage, carryingArmy){
         return resourcesСapturedArmy;
     }
 
-    let indexOfCarrying = carryingArmy / sumResourcesInVillage;
+    let multiplyOfCarrying = carryingArmy / sumResourcesInVillage;
 
-    setPoportionately(resourcesInVillage, indexOfCarrying, carryingArmy);
+    setPoportionately(resourcesInVillage, multiplyOfCarrying, carryingArmy);
     
     sumResourcesInArmy = getSumAllResources(resourcesСapturedArmy);
     
@@ -40,19 +40,23 @@ function getSumAllResources (resources){
     return result;
 }
 
-function setPoportionately(resources, index, carrying){  
-    resources.forEach(resource =>{
-        let add = (Math.round(resource * index));
+function setPoportionately(resources, multiply, carrying){  
+   
+    for (let i= 0; i<resources.length; i++){
         
+        let indexOfMax = getIndexMaxValue(resources);
+        let add = (Math.round(resources[indexOfMax] * multiply));
+      
+        resources[indexOfMax] = -1;
         if (carrying - add >= 0){
-            resourcesСapturedArmy.push(add);
+            resourcesСapturedArmy[indexOfMax] = add;
             carrying -= add;
         } else {
-            resourcesСapturedArmy.push(carrying);
+            resourcesСapturedArmy[indexOfMax] = carrying;
             carrying = 0;
-            index = 0;
+            multiply = 0;
         }    
-    });  
+    }  
 }
 
 function setMoreResources(difference){
@@ -65,30 +69,47 @@ function setMoreResources(difference){
     }
 }
 
-// If army can't carry
+function getIndexMaxValue(arr){
+    let indexOfMax = 0,
+        maxValue = arr[indexOfMax];
+
+    arr.forEach ( (value, index) => {
+        if (value > maxValue){
+            indexOfMax = index;
+            maxValue = value;
+        }
+    });
+
+    return indexOfMax;
+}
+
+// // If army can't carry
 console.log(attackTheVilage([5,6,7], 0));
 
-// If in village is nothing
+// // If in village is nothing
 console.log(attackTheVilage([], 10));
 
 
-// If army can carry more then are in the village
+// // If army can carry more then are in the village
 console.log(attackTheVilage([5,6,7], 20));
 
-// calculate poportionately
+// // calculate poportionately
 console.log(attackTheVilage([5,6,7], 15));
 
-// calculate poportionately
+// // calculate poportionately
 console.log(attackTheVilage([8,1,1], 9));
 
-// calculate poportionately
+// // calculate poportionately
 console.log(attackTheVilage([100,300,200], 120));
 
-// calculate poportionately
+// // calculate poportionately
 console.log(attackTheVilage([2,2,2], 5));
 
 // calculate poportionately
 console.log(attackTheVilage([1,1,1], 2));
 
 // calculate poportionately
-console.log(attackTheVilage([100,100,100,100], 3));
+console.log(attackTheVilage([100,100,100,100], 2));
+
+// calculate poportionately
+console.log(attackTheVilage([1,1,1,1,1,1,1,2], 6));
