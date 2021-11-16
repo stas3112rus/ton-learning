@@ -19,7 +19,7 @@ function attackTheVilage(resourcesInVillage, carryingArmy){
 
     let indexOfCarrying = carryingArmy / sumResourcesInVillage;
 
-    setPoportionately(resourcesInVillage, indexOfCarrying);
+    setPoportionately(resourcesInVillage, indexOfCarrying, carryingArmy);
     
     sumResourcesInArmy = getSumAllResources(resourcesСapturedArmy);
     
@@ -40,9 +40,18 @@ function getSumAllResources (resources){
     return result;
 }
 
-function setPoportionately(resources, index){  
+function setPoportionately(resources, index, carrying){  
     resources.forEach(resource =>{
-        resourcesСapturedArmy.push(Math.round(resource * index));
+        let add = (Math.round(resource * index));
+        
+        if (carrying - add >= 0){
+            resourcesСapturedArmy.push(add);
+            carrying -= add;
+        } else {
+            resourcesСapturedArmy.push(carrying);
+            carrying = 0;
+            index = 0;
+        }    
     });  
 }
 
@@ -74,3 +83,12 @@ console.log(attackTheVilage([8,1,1], 9));
 
 // calculate poportionately
 console.log(attackTheVilage([100,300,200], 120));
+
+// calculate poportionately
+console.log(attackTheVilage([2,2,2], 5));
+
+// calculate poportionately
+console.log(attackTheVilage([1,1,1], 2));
+
+// calculate poportionately
+console.log(attackTheVilage([100,100,100,100], 3));
