@@ -26,7 +26,7 @@ function attackTheVilage(resourcesInVillage, carryingArmy){
     let difference = carryingArmy - sumResourcesInArmy;    
     
     if (difference > 0){
-        setMoreResources(difference);
+        setMoreResources(difference, resourcesInVillage);
     }
 
     return resourcesСapturedArmy;
@@ -40,8 +40,10 @@ function getSumAllResources (resources){
     return result;
 }
 
-function setPoportionately(resources, multiply, carrying){  
-   
+function setPoportionately(resourcesInVillage, multiply, carrying){  
+    
+    let resources = [...resourcesInVillage];
+
     for (let i= 0; i<resources.length; i++){
         
         let indexOfMax = getIndexMaxValue(resources);
@@ -59,10 +61,14 @@ function setPoportionately(resources, multiply, carrying){
     }  
 }
 
-function setMoreResources(difference){
+function setMoreResources(difference, resourcesInVillage){
     for (let i = 0; i<resourcesСapturedArmy.length; i++){
-        resourcesСapturedArmy[i] = resourcesСapturedArmy[i]++;
-        difference--;
+        
+        if (resourcesInVillage[i]>resourcesСapturedArmy[i]){            
+            resourcesСapturedArmy[i]=resourcesСapturedArmy[i]+1;
+            difference--;
+        } 
+        
         if (difference<=0){
             break;
         }
@@ -113,3 +119,8 @@ console.log(attackTheVilage([100,100,100,100], 2));
 
 // calculate poportionately
 console.log(attackTheVilage([1,1,1,1,1,1,1,2], 6));
+
+// calculate poportionately
+console.log(attackTheVilage([1,1,1,1,1,1,1,100], 6));
+
+console.log(attackTheVilage([1,1,1,1,1,2,1,2,1], 5));
